@@ -1,7 +1,6 @@
 import json, requests
 import pandas as pd 
 
-#setting constants
 
 def updateTickets(qtoken, baseUrl, fileName):
     df = pd.read_csv(fileName)
@@ -9,7 +8,7 @@ def updateTickets(qtoken, baseUrl, fileName):
     with open('data.json') as f:
         dataset = json.load(f)
             
-    #setting file variables for each row
+    #setting variables from CSV file
     ticketKey = dataset['ticketKey']
     areaLvlBuid = dataset['AREA_LVL_BUID']
     areaLvlDesc = dataset['AREA_LVL_DESC']
@@ -19,6 +18,7 @@ def updateTickets(qtoken, baseUrl, fileName):
     "Content-Type": 'application/json'
      }
     
+    #looping through each row in the CSV and making a POST request to the JSON event endpoint
     for x in range(0,len(ticketKey)):
         try:
             response = requests.post(baseUrl, headers=headers, json={
@@ -31,6 +31,7 @@ def updateTickets(qtoken, baseUrl, fileName):
             print(f"an error occured for ticket {ticketKey[f'{x}']}")
 
 def main():
+    #setting constants
     qtoken = "sZo1RySufQ4HmkfMvADetOIDglBHQt3Y8bA9pvRJ"
     baseUrl = "https://syd1.qualtrics.com/inbound-event/v1/events/JSON/triggers?contextId=OC_1CKhz1NJrDYqdNz&userId=UR_9KWWseklgT2sFXD&brandId=nablistens&triggerId=OC_1CKhz1NJrDYqdNz"
     fileName = "tickets.txt"
