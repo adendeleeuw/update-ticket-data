@@ -32,7 +32,7 @@ def updateTickets(qtoken, baseUrl, fileName):
 
 def main():
     #setting constants
-    qtoken = "sZo1RySufQ4HmkfMvADetOIDglBHQt3Y8bA9pvRJ"
+    qtoken = ""
     baseUrl = "https://syd1.qualtrics.com/inbound-event/v1/events/JSON/triggers?contextId=OC_1CKhz1NJrDYqdNz&userId=UR_9KWWseklgT2sFXD&brandId=nablistens&triggerId=OC_1CKhz1NJrDYqdNz"
     fileName = "tickets.txt"
     updateTickets(qtoken, baseUrl, fileName)
