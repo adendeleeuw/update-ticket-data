@@ -22,9 +22,9 @@ def updateTickets(qtoken, baseUrl, fileName):
     for x in range(0,len(ticketKey)):
         try:
             response = requests.post(baseUrl, headers=headers, json={
-            "ticketKey": ticketKey['{0}'.format(x)],
-            "AREA_LVL_BUID": areaLvlBuid['{0}'.format(x)],
-            "AREA_LVL_DESC": areaLvlDesc['{0}'.format(x)]
+            "ticketKey": ticketKey[f'{x}']
+            "AREA_LVL_BUID": areaLvlBuid[f'{x}']
+            "AREA_LVL_DESC": areaLvlDesc[f'{x}']
             })
             print(response.text)
         except:
